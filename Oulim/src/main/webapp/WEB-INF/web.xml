@@ -33,13 +33,26 @@
 		<filter-class>com.oulim.app.common.filter.LoginCheckFilter</filter-class>
 	</filter>
 
-	<!-- <filter-mapping> <filter-name>loginCheckFilter</filter-name> <url-pattern>/app/mypage/*</url-pattern> 
-		</filter-mapping> <filter-mapping> <filter-name>loginCheckFilter</filter-name> 
-		<url-pattern>/app/volunteer-activity/*</url-pattern> </filter-mapping> <filter-mapping> 
-		<filter-name>loginCheckFilter</filter-name> <url-pattern>/app/volunteer-management/*</url-pattern> 
-		</filter-mapping> <filter-mapping> <filter-name>loginCheckFilter</filter-name> 
-		<url-pattern>/app/kkomi/*</url-pattern> </filter-mapping> <filter-mapping> 
-		<filter-name>loginCheckFilter</filter-name> <url-pattern>/app/community/*</url-pattern> 
+	<!-- <filter-mapping> 
+		<filter-name>loginCheckFilter</filter-name>
+		 <url-pattern>/app/mypage/*</url-pattern> 
+		</filter-mapping> 
+		<filter-mapping>
+		 <filter-name>loginCheckFilter
+		</filter-name> 
+		<url-pattern>/app/volunteer-activity/*</url-pattern>
+		 </filter-mapping> 
+		<filter-mapping> 
+		<filter-name>loginCheckFilter</filter-name>
+		 <url-pattern>/app/volunteer-management/*</url-pattern> 
+		</filter-mapping> 
+		<filter-mapping>
+		 <filter-name>loginCheckFilter</filter-name> 
+		<url-pattern>/app/kkomi/*</url-pattern>
+		 </filter-mapping> 
+		<filter-mapping> 
+		<filter-name>loginCheckFilter</filter-name> 
+		<url-pattern>/app/community/*</url-pattern> 
 		</filter-mapping> -->
 	<servlet>
 		<servlet-name>Kkomi</servlet-name>
