@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -5,15 +7,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>rank</title>
-  <link rel="stylesheet" href="/Oulim/asset/css/core/reset.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/core/variable.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/core/typography.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/core/layout.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/component/badge.css">
-  <link rel="stylesheet" href="/Oulim/asset/css/pages/kkomi/rank.css">
+  <link rel="stylesheet" href="Oulim/asset/css/core/reset.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/variable.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/typography.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/layout.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/component/badge.css">
+  <link rel="stylesheet" href="Oulim/asset/css/pages/kkomi/rank.css">
 
-  <script defer src="/Oulim/asset/js/pages/main/include.js"></script>
-  <script defer src="/Oulim/asset/js/pages/kkomi/rank.js"></script>
+  <script defer src="Oulim/asset/js/pages/main/include.js"></script>
+  <script defer src="Oulim/asset/js/pages/kkomi/rank.js"></script>
 </head>
 
 <body>

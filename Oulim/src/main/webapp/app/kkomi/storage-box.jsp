@@ -1,22 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>storage-box</title>
-    <link rel="stylesheet" href="/Oulim/asset/css/core/reset.css" />
-    <link rel="stylesheet" href="/Oulim/asset/css/core/variable.css" />
-    <link rel="stylesheet" href="/Oulim/asset/css/core/layout.css" />
-    <link rel="stylesheet" href="/Oulim/asset/css/core/Typography.css">
+    <link rel="stylesheet" href="Oulim/asset/css/core/reset.css" />
+    <link rel="stylesheet" href="Oulim/asset/css/core/variable.css" />
+    <link rel="stylesheet" href="Oulim/asset/css/core/layout.css" />
+    <link rel="stylesheet" href="Oulim/asset/css/core/Typography.css">
 
-    <link rel="stylesheet" href="/Oulim/asset/css/component/button.css">
-    <link rel="stylesheet" href="/Oulim/asset/css/pages/kkomi/storage-box.css" />
-
-
+    <link rel="stylesheet" href="Oulim/asset/css/component/button.css">
+    <link rel="stylesheet" href="Oulim/asset/css/pages/kkomi/storage-box.css" />
 
 
-  <script defer src="/Oulim/asset/js/pages/main/include.js"></script> 
-  <script src="/Oulim/asset/js/pages/kkomi/storage-box.js"></script>
+
+
+  <script defer src="Oulim/asset/js/pages/main/include.js"></script> 
+  <script src="Oulim/asset/js/pages/kkomi/storage-box.js"></script>
 </head>
 <body>
     <div id="header"></div>

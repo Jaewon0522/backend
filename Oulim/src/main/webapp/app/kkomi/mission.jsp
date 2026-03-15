@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -5,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mission</title>
 <!-- 기본css -->
-  <link rel="stylesheet" href="/Oulim/asset/css/core/reset.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/core/variable.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/core/typography.css" />
-  <link rel="stylesheet" href="/Oulim/asset/css/core/layout.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/reset.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/variable.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/typography.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/core/layout.css" />
 <!-- 컴포넌트 -->
-  <link rel="stylesheet" href="/Oulim/asset/css/component/button.css">
-  <link rel="stylesheet" href="/Oulim/asset/css/component/tab.css">
-  <link rel="stylesheet" href="/Oulim/asset/css/pages/kkomi/mission.css" />
+  <link rel="stylesheet" href="Oulim/asset/css/component/button.css">
+  <link rel="stylesheet" href="Oulim/asset/css/component/tab.css">
+  <link rel="stylesheet" href="Oulim/asset/css/pages/kkomi/mission.css" />
 <!-- 스크립트 -->
-  <script src="/Oulim/asset/js/pages/kkomi/mission.js"></script>
-  <script src="/Oulim/asset/js/components/tab.js"></script>
-  <script defer src="/Oulim/asset/js/pages/main/include.js"></script> 
+  <script src="Oulim/asset/js/pages/kkomi/mission.js"></script>
+  <script src="Oulim/asset/js/components/tab.js"></script>
+  <script defer src="Oulim/asset/js/pages/main/include.js"></script> 
 </head>
 <body>
     <div id="header"></div>
