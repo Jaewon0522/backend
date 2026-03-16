@@ -17,7 +17,15 @@
 
 	<!-- DTO 별칭 설정 -->
 	<typeAliases>
+		<!-- user DTO Alias -->
 		<typeAlias type="com.oulim.app.user.dto.UserDTO" alias="UserDTO"></typeAlias>
+		<typeAlias type="com.oulim.app.user.dto.CurrencyDTO" alias="CurrencyDTO"></typeAlias>
+		
+		<!-- kkomi DTO Alias -->
+		<typeAlias type="com.oulim.app.kkomi.dto.KkomiDTO" alias="KkomiDTO"></typeAlias>
+		<typeAlias type="com.oulim.app.kkomi.dto.RankingDTO" alias="RankingDTO"></typeAlias>
+		<typeAlias type="com.oulim.app.kkomi.dto.RewardStorageDTO" alias="RewardStorageDTO"></typeAlias>
+		<typeAlias type="com.oulim.app.kkomi.dto.UserMissionDTO" alias="UserMissionDTO"></typeAlias>
 	</typeAliases>
 
 	<environments default="oracle">
@@ -35,6 +43,7 @@
 	<!-- Mapper.xml 등록 추후 필요 -->
 	<mappers>
 		<mapper resource="com/oulim/app/user/mapper/UserMapper.xml" />
+		<mapper resource="com/oulim/app/kkomi/mapper/KkomiMapper.xml"/>
 	</mappers>
 </configuration>
 
