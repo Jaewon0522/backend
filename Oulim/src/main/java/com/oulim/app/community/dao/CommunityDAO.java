@@ -1,7 +1,7 @@
 package com.oulim.app.community.dao;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -9,7 +9,6 @@ import com.oulim.app.community.dto.CommunityCommentDTO;
 import com.oulim.app.community.dto.CommunityPostDTO;
 import com.oulim.app.community.dto.CommunityPostJoinDTO;
 import com.oulim.app.community.dto.PostLikeDTO;
-
 import com.oulim.app.config.MyBatisConfig;
 
 public class CommunityDAO {
@@ -69,7 +68,7 @@ public class CommunityDAO {
 	}
 
 	// 게시글 목록 조회
-	public List<CommunityPostJoinDTO> selectList(HashMap<String, Integer> pageMap) {
+	public List<CommunityPostJoinDTO> selectList(Map<String, Object> pageMap) {
 		System.out.println("게시물 목록 조회 - selectList 메소드 실행");
 		List<CommunityPostJoinDTO> list = sqlSession.selectList("community.selectPostAll", pageMap);
 		return list;
@@ -82,7 +81,7 @@ public class CommunityDAO {
 	}
 
 	// 댓글 조회
-	public List<CommunityCommentDTO> selectCommentList(HashMap<String, Integer> pageMap) {
+	public List<CommunityCommentDTO> selectCommentList(Map<String, Integer> pageMap) {
 		System.out.println("댓글 목록 조회 - selectCommentList 메소드 실행 ");
 		List<CommunityCommentDTO> list = sqlSession.selectList("community.selectPostComment", pageMap);
 		return list;

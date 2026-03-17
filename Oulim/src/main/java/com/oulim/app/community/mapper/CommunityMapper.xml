@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="community">
 	<!-- 개시물 총 갯수 계산 -->
@@ -44,11 +45,11 @@
 	<!-- 댓글 작성 -->
 	<insert id="commentInsert" parameterType="CommunityCommentDTO">
 		INSERT INTO TBL_COMMUNITY_COMMENT (COMMENT_NO, USER_NO, POST_NO, USER_NICKNAME, COMMENT_CONTENT, POST_DATE)
-		VALUES(SEQ_TBL_COMMUNITY_COMMENT.nextval, #{userNo}, #{postNo}, #{userNickname, #{commentContent}, #{postDate})
+		VALUES(SEQ_TBL_COMMUNITY_COMMENT.nextval, #{userNo}, #{postNo}, #{userNickname}, #{commentContent}, #{postDate})
 	</insert>
 	
 	<!-- 전체 게시글 조회 -->
-	<select id="selectPostAll" resultType="CommunityPostJoinDTO">
+<!-- 	<select id="selectPostAll" resultType="CommunityPostJoinDTO">
 		<![CDATA[
 			SELECT * FROM (
 			SELECT ROWNUM AS RNUM, subquery.*
@@ -60,6 +61,41 @@
 			) subquery
 			) WHERE RNUM BETWEEN #{startRow} AND #{endRow}
 		]]>
+	</select> -->
+	
+		<!-- 전체 게시글 조회 -->
+	<select id="selectPostAll" parameterType="map" resultType="CommunityPostJoinDTO">
+ <![CDATA[
+        SELECT * FROM (
+            SELECT ROWNUM AS rnum, subquery.*
+            FROM (
+                SELECT tcp.post_no,
+                       tcp.user_no,
+                       tcp.post_title,
+                       tcp.user_nickname,
+                       tcp.post_date,
+                       (SELECT COUNT(post_like_no)
+                          FROM tbl_post_like tpl
+                         WHERE tpl.post_no = tcp.post_no) AS like_count
+                FROM tbl_community_post tcp
+    ]]>
+                <where>
+                    <if test="keyword != null and keyword != ''">
+                        <choose>
+                            <when test="searchType == 'title'">
+                                tcp.post_title LIKE '%' || #{keyword} || '%'
+                            </when>
+                            <when test="searchType == 'writer'">
+                                tcp.user_nickname LIKE '%' || #{keyword} || '%'
+                            </when>
+                        </choose>
+                    </if>
+                </where>
+    <![CDATA[
+                ORDER BY tcp.post_date DESC
+            ) subquery
+        ) WHERE rnum BETWEEN #{startRow} AND #{endRow}
+    ]]>
 	</select>
 	
 	<!-- 게시글 상세 -->
@@ -67,7 +103,7 @@
 	<![CDATA[
 		SELECT tcp.post_no,tcp.user_no, tcp.post_title, tcp.user_nickname, tcp.post_date, tcp.post_content,
 		tcp.post_view_count, 
-		(select count(post_like_no) from tbl_post_like tpl where tpl.post_no = tcp.post_no) as like_count
+		(select count(post_like_no) from tbl_post_like tpl where tpl.post_no = tcp.post_no) as like_count,
 		tpi.Post_Img_System_Name, tpi.Post_Img_Origin_Name
 		FROM tbl_community_post tcp
 		LEFT JOIN tbl_post_image tpi on tpi.post_no = tcp.post_no
@@ -81,7 +117,7 @@
 			SELECT * FROM(
 				SELECT ROWNUM AS rnum, subquery.*
 				FROM (
-					SELECT tcc.comment_no, tcc.user_no, tcc.user_nickname, tcc.coment_content, tcc.post_date
+					SELECT tcc.comment_no, tcc.user_no, tcc.user_nickname, tcc.comment_content, tcc.post_date
 					FROM tbl_community_comment tcc
 					WHERE tcc.post_no = #{postNo}
 					ORDER BY tcc.post_date desc ) subquery
@@ -91,7 +127,26 @@
 	
 	<!-- 게시글 추천 -->
 	<insert id="postLike" parameterType="PostLikeDTO">
-		INSERT TBL_POST_LIKE (Post_Like_No, Post_No, User_No)
+		INSERT INTO TBL_POST_LIKE (Post_Like_No, Post_No, User_No)
 		VALUES (SEQ_TBL_POST_LIKE.nextval, #{postNo}, #{userNo})
 	</insert>
+	
+	<!-- 작성글 검색 -->
+	<select id="searchPost" parameterType="map" resultType="CommunityPostJoinDTO">
+		SELEDCT post_no, post_Title, user_nickname, post_date
+		FROM tbl_community_post
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<choose>
+					<when test="searchType == 'title'">
+						post_title LIKE '%' || #{keyword} || '%'
+					</when>
+					<when test="searchType == 'writer'">
+						user_nickname LIKE '%' || #{keyword} || '%'
+					</when>
+				</choose>
+			</if>
+		</where>
+		ORDER BY post_date DESC
+	</select>
 </mapper>
