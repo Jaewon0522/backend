@@ -37,13 +37,12 @@ public class VolunActivityDTO {
 	private String volunActPostnum;
 	private int volunActRecruMaxCount;
 	private String volunActDetail;
-	private String recurStatus;
-	public String getRecurStatus() {
-		return recurStatus;
-	}
-	public void setRecurStatus(String recurStatus) {
-		this.recurStatus = recurStatus;
-	}
+	private String recruStatus;     // DB 계산 결과용 상태값(모집중,모집예정,마감)
+	private String recruitStatus;   // 검색용 상태값
+	private String actType;         // 검색용 활동분야 문자열
+	private String keyword;         // 검색어
+	
+
 	public int getVolunActNo() {
 		return volunActNo;
 	}
@@ -146,6 +145,31 @@ public class VolunActivityDTO {
 	public void setVolunActDetail(String volunActDetail) {
 		this.volunActDetail = volunActDetail;
 	}
+	public String getRecruStatus() {
+		return recruStatus;
+	}
+	public void setRecruStatus(String recruStatus) {
+		this.recruStatus = recruStatus;
+	}
+	public String getRecruitStatus() {
+		return recruitStatus;
+	}
+	public void setRecruitStatus(String recruitStatus) {
+		this.recruitStatus = recruitStatus;
+	}
+	public String getActType() {
+		return actType;
+	}
+	public void setActType(String actType) {
+		this.actType = actType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	@Override
 	public String toString() {
 		return "VolunActivityDTO [volunActNo=" + volunActNo + ", volunActTitle=" + volunActTitle
@@ -156,8 +180,12 @@ public class VolunActivityDTO {
 				+ ", volunActOrganNo=" + volunActOrganNo + ", volunActAddress=" + volunActAddress
 				+ ", volunActAddressDetail=" + volunActAddressDetail + ", volunActPostnum=" + volunActPostnum
 				+ ", volunActRecruMaxCount=" + volunActRecruMaxCount + ", volunActDetail=" + volunActDetail
-				+ ", recurStatus=" + recurStatus + "]";
+				+ ", recruStatus=" + recruStatus + ", recruitStatus=" + recruitStatus + ", actType=" + actType
+				+ ", keyword=" + keyword + ", searchType="  + "]";
 	}
+	
+
+	
 	
 	
 }
