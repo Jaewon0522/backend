@@ -79,7 +79,10 @@ public class UserFrontController extends HttpServlet {
 		} else if (target.equals("/user/pwChangeOk.usr")) {
 		    System.out.println("비밀번호 변경 요청");
 		    execute = new PwChangeOkController();
-		}
+		    
+		} else if (target.equals("/user/checkOk.usr")) {
+		    result = new CheckOkController().execute(request, response);
+		} 
 		
 		if (execute != null) {
 			result = execute.execute(request, response);

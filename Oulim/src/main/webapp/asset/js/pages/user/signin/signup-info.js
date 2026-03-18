@@ -2,7 +2,7 @@ const nickname = document.getElementById("user-nickname");
 const userId = document.getElementById("user-id");
 const password = document.getElementById("user-password");
 const passwordCheck = document.getElementById("user-password-check");
-
+const email = document.getElementById("user-email");
 const nicknameError = document.getElementById("is-user-nickname-error");
 const userIdError = document.getElementById("is-user-id-error");
 const passwordError = document.getElementById("is-user-password-error");
@@ -12,6 +12,16 @@ const passwordCheckError = document.getElementById(
 
 const signupBtn = document.getElementById("is-signup-btn");
 
+fetch(`/user/checkDuplicate.usr?type=email&value=${encodeURIComponent(email)}`)
+  .then(res => res.text())
+  .then(result => {
+    if (result === "duplicated") {
+      alert("이미 사용 중인 이메일입니다.");
+    } else if (result === "available") {
+      alert("사용 가능한 이메일입니다.");
+    }
+  });
+  
 signupBtn.addEventListener("click", function (e) {
   let hasError = false;
 
@@ -31,7 +41,7 @@ signupBtn.addEventListener("click", function (e) {
     if (!hasError) nickname.focus();
     hasError = true;
   }
-
+  
   if (userId.value.trim() === "") {
     userIdError.textContent = "아이디를 입력해주세요.";
     userId.classList.add("is-error");

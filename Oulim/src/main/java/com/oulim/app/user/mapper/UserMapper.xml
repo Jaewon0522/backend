@@ -3,7 +3,7 @@
 <mapper namespace="user">
 
 	<!-- 아이디 중복체크 -->
-	<select id="countByUserId" parameterType="string"
+	<select id="chkUserId" parameterType="string"
 		resultType="int">
 		SELECT COUNT(*)
 		FROM TBL_USER
@@ -11,7 +11,7 @@
 	</select>
 
 	<!-- 이메일 중복체크 -->
-	<select id="countByUserEmail" parameterType="string"
+	<select id="chkUserEmail" parameterType="string"
 		resultType="int">
 		SELECT COUNT(*)
 		FROM TBL_USER
@@ -19,7 +19,7 @@
 	</select>
 
 	<!-- 닉네임 중복체크 -->
-	<select id="countByUserNickname" parameterType="string"
+	<select id="chkUserNickname" parameterType="string"
 		resultType="int">
 		SELECT COUNT(*)
 		FROM TBL_USER
@@ -28,7 +28,7 @@
 	</select>
 
 	<!-- 폰번호 중복체크 -->
-	<select id="countByUserPhoneNum" parameterType="string"
+	<select id="chkUserPhoneNum" parameterType="string"
 		resultType="int">
 		SELECT COUNT(*)
 		FROM TBL_USER
