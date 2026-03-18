@@ -77,14 +77,14 @@
 		<servlet-name>Community</servlet-name>
 		<url-pattern>*.commu</url-pattern>		
 	</servlet-mapping>
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>Admin</servlet-name>
 		<servlet-class>com.oulim.app.admin.controller.AdminFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Admin</servlet-name>
 		<url-pattern>*.adm</url-pattern>		
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<servlet>
 		<servlet-name>MyPage</servlet-name>
 		<servlet-class>com.oulim.app.mypage.controller.MyPageFrontController</servlet-class>
@@ -103,7 +103,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>VolunAct</servlet-name>
-		<servlet-class>com.oulim.app.volunteer.controller.activity.VolunActFrontController</servlet-class>
+		<servlet-class>com.oulim.app.volunteer.activity.controller.VolunActFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>VolunAct</servlet-name>
@@ -111,7 +111,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>VolunManage</servlet-name>
-		<servlet-class>com.oulim.app.volunteer.controller.manangement.VolunManageFrontController</servlet-class>
+		<servlet-class>com.oulim.app.volunteer.management.controller.VolunManageFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>VolunManage</servlet-name>

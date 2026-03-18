@@ -17,7 +17,7 @@ public class LoginController implements Execute {
 
 		Result result = new Result();
 
-		result.setPath("/app/user/login.jsp");
+		result.setPath("/app/user/login/login.jsp");
 		result.setRedirect(false);
 
 		return result;
