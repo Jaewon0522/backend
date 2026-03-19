@@ -27,9 +27,8 @@
 	href="${pageContext.request.contextPath}/asset/css/pages/main/header-login.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/pages/main/footer.css" />
-<%--  <script defer
-	src="${pageContext.request.contextPath}/asset/js/pages/volunteer-manage/volunteer-manage-detail.js"></script>   --%>
-<script defer src="${pageContext.request.contextPath}/asset/js/pages/main/include.js"></script>
+
+<%-- <script defer src="${pageContext.request.contextPath}/asset/js/pages/volunteer-manage/volunteer-manage-detail.js"></script> --%>
 </head>
 
 <body>
@@ -41,7 +40,9 @@
 			<div class="p-volunteer-manage-detail_header">
 				<h1 class="p-volunteer-manage-detail_title">봉사 상세</h1>
 				<div class="c-button-add">
-            		<button class="edit-btn c-button c-button--primary c-button--md">출석 처리</button>
+            		<button type="button" id="attendanceToggleBtn" class="edit-btn c-button c-button--primary c-button--md">
+						출석 처리
+					</button>
           		</div>
 				<div class="c-button-group">
 					<button class="edit-btn c-button c-button--primary c-button--md" type="button"
@@ -125,7 +126,7 @@
 					</div>
 				</div>
 			</div>
-			
+			<div id="detailSection">
 			<!-- 글내용 영역 추가 -->
 			<div class="c-detail-card">
 				<div class="c-detail-card__info">
@@ -139,8 +140,9 @@
 					</div>
 				</div>
 			</div>
-			
+			</div>
 			<!-- 봉사자 리스트 출력  -->
+		<div id="attendanceSection" style="display: none;">
 		<form action="${pageContext.request.contextPath}/volunteer-manage/attendance.vm" method="post">
 			<input type="hidden" name="volunActNo" value="${volunDetail.volunActNo}">
 			<input type="hidden" name="changeAmount" value="${volunDetail.volunActPoint}">
@@ -196,6 +198,7 @@
 							<button type="submit" name="attendanceStatus" value="2" class="c-button c-button--secondary c-button--md">결석</button>
 					</div>
 			</form>
+			</div>
 			<!-- 페이지네이션 -->
 			<nav class="c-pagination">
 				<c:if test="${lastPage > 1}">
