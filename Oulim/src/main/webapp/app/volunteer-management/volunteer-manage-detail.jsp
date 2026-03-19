@@ -23,11 +23,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/component/DetailCard.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/component/badge.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/asset/css/pages/main/header-login.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/asset/css/pages/main/footer.css" />
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/pages/main/header-login.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/pages/main/footer.css" />
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d090ba1051e43d12c75b06b4254865bf&autoload=false&libraries=services"></script>
 <script defer src="${pageContext.request.contextPath}/asset/js/pages/volunteer-manage/volunteer-manage-detail.js"></script>
 </head>
 
@@ -153,6 +151,14 @@
 					</div>
 				</div>
 			</div>
+			<!--지도  -->
+				<div class="c-detail-card">
+					<div class="c-detail-card__info">
+						<div class="c-detail-card__row">
+							<div id="map"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- 봉사자 리스트 출력  -->
 		<div id="attendanceSection" style="display: none;">
@@ -235,6 +241,7 @@
 						</p>
 					</c:if>
 			</form>
+			
 			<!-- 페이지네이션 -->
 			<nav class="c-pagination" id="attendancePagination">
 				<c:if test="${lastPage > 1}">

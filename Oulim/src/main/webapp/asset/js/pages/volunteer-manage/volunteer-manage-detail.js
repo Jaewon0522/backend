@@ -106,3 +106,42 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	
 });
+
+// 지도
+window.addEventListener("DOMContentLoaded", function () {
+    const mapContainer = document.getElementById("map");
+    const addressElement = document.getElementById("volunteerLocation");
+
+    if (!mapContainer || !addressElement) return;
+
+    kakao.maps.load(function () {
+        const address = addressElement.textContent.trim();
+
+        const map = new kakao.maps.Map(mapContainer, {
+            center: new kakao.maps.LatLng(37.5665, 126.9780), // 기본 좌표
+            level: 3
+        });
+
+        if (!address) {
+            console.error("주소값이 없습니다.");
+            return;
+        }
+
+        const geocoder = new kakao.maps.services.Geocoder();
+
+        geocoder.addressSearch(address, function (result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+
+                map.setCenter(coords);
+            } else {
+                console.error("주소 검색 실패:", address);
+            }
+        });
+    });
+});

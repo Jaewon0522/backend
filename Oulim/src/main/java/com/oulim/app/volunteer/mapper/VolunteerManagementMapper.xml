@@ -2,7 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="VolunteerManagement">
 	
-	
+	<!--봉사 히스토리에 검색 엔 추가-->
+	<insert id="insertVolunHistory" parameterType="VolunApplyDTO">
+			INSERT INTO TBL_VOLUN_HISTORY (
+			LOG_NO,
+			USER_NO,
+			VOLUN_TIME,
+			VOLUN_ACT_DATE,
+			VOLUN_ACT_TITLE,
+			VOLUN_ACT_GET_POINT,
+			VOLUN_ACT_ADDRESS,
+			VOLUN_ACT_ADDRESS_DETIAL
+		)
+		SELECT
+			SEQ_TBL_VOLUN_HISTORY.NEXTVAL,
+			#{userNo},
+			(VOLUN_ACT_END_TIME - VOLUN_ACT_BEGIN_TIME),
+			VOLUN_ACT_PROC_BEGIN,
+			VOLUN_ACT_TITLE,
+			VOLUN_ACT_POINT,
+			VOLUN_ACT_ADDRESS,
+			VOLUN_ACT_ADDRESS_DETAIL
+		FROM TBL_VOLUN_ACTIVITY
+		WHERE VOLUN_ACT_NO = #{volunActNo}
+	</insert>
+
 	<!--하루 봉사자 계산-->
 	<select id="selectApplyCountByDate" parameterType="int" resultType="VolunApplyDTO">
 		SELECT
