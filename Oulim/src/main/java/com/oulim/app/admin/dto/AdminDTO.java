@@ -34,6 +34,11 @@ public class AdminDTO {
 	public String getAdminPw() {
 		return adminPw;
 	}
+	@Override
+	public String toString() {
+		return "AdminDTO [adminNum=" + adminNum + ", adminId=" + adminId + ", adminPw=" + adminPw + ", adminEmail="
+				+ adminEmail + "]";
+	}
 	public void setAdminPw(String adminPw) {
 		this.adminPw = adminPw;
 	}
@@ -45,11 +50,5 @@ public class AdminDTO {
 	}
 	
 	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
-
 	
 }
