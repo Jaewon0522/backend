@@ -100,7 +100,7 @@
           </div>
 
           <div class="c-button-group">
-            <button id="accept" class="c-button c-button--primary c-button--md" style="width:120px">
+            <button type="submit" id="accept" class="c-button c-button--primary c-button--md" style="width:120px">
               확인
             </button>
 
