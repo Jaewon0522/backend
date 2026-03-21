@@ -14,12 +14,12 @@ import com.oulim.app.common.controller.Result;
 import com.oulim.app.mypage.dao.MyPageJoinDAO;
 import com.oulim.app.mypage.dto.MyPageJoinDTO;
 
-public class MyPageQuitOkController implements Execute {
+public class MyPageOrganCheckOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		Result result = new Result();
 
 		MyPageJoinDAO mypageDAO = new MyPageJoinDAO();
@@ -30,11 +30,8 @@ public class MyPageQuitOkController implements Execute {
 		Integer userNo = (Integer) session.getAttribute("userNo");
 
 		String userPw = request.getParameter("userPw");
-//		String userPw2 = (String)mypageDAO.enterMyPage1(userNo);
 
-		Map<String, Object> userMap = new HashMap<>();
-		userMap.put("userNo", userNo);
-		userMap.put("userPw", userPw);
+		System.out.println(userNo);
 
 		if (request.getSession().getAttribute("userNo") == null) {
 			result.setPath(request.getContextPath() + "/app/user/login/login.jsp");
@@ -42,33 +39,10 @@ public class MyPageQuitOkController implements Execute {
 			return result;
 		}
 
-		System.out.println(userNo);
-
-		if (userNo == null) {
-			System.out.println("세션번호 부재 오류");
-			path = "/app/mypage/check/check.jsp"; // 일단 내 페이지로 > 테스트용
-			result.setPath(path);
-			result.setRedirect(true);
-			return result;
-		}
-
-		if (session != null) {
-
-			if (mypageDAO.enterMyPage(userMap)) {
-				System.out.println("비밀번호 일치 조건문 진입 성공");
-				path = "/";
-				mypageDAO.quit(userNo);
-				System.out.println("쿼리문 실행 완료");
-
-				session.invalidate(); // 세션 전체 삭제
-			}
-
-			result.setPath(path);
-			result.setRedirect(false);
-
-			return result;
-		}
-
+		Map<String, Object> userMap = new HashMap<>();
+		userMap.put("userNo", userNo);
+		userMap.put("userPw", userPw);
 		return null;
 	}
+
 }
