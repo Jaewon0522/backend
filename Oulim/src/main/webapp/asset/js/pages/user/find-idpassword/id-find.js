@@ -11,6 +11,35 @@ const errorMessage = document.getElementById("find-id-error-message");
 const findBtn = document.getElementById("is-id-find-btn");
 const emailBtn = document.getElementById("find-id-email-btn");
 const verifyBtn = document.getElementById("find-id-verify-btn");
+const timerDisplay = document.getElementById("find-id-timer");
+let timerInterval = null;
+let remainingTime = 180;
+
+function startTimer() {
+  clearInterval(timerInterval); 
+
+  remainingTime = 180; 
+  updateTimer();
+
+  timerInterval = setInterval(function () {
+    remainingTime--;
+
+    updateTimer();
+
+    if (remainingTime <= 0) {
+      clearInterval(timerInterval);
+      alert("인증시간이 만료되었습니다.");
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const min = Math.floor(remainingTime / 60);
+  const sec = remainingTime % 60;
+
+  timerDisplay.textContent =
+    min + ":" + String(sec).padStart(2, "0");
+}
 
 function getValue(element) {
   return element ? element.value.trim() : "";
@@ -71,6 +100,7 @@ if (emailBtn) {
 
 	    if (result === "success") {
 	      alert("인증번호를 이메일로 발송했습니다.");
+		  startTimer();
 	    } else if (result === "empty") {
 	      alert("이메일을 입력해주세요.");
 	    } else if (result === "fail") {
@@ -89,9 +119,24 @@ if (emailBtn) {
 }
 
 /* 인증확인 버튼 */
+let isEmailVerified = false;
+
 if (verifyBtn) {
   verifyBtn.addEventListener("click", function () {
+    const userEmail = getValue(email);
     const verifyCode = getValue(verify);
+
+    if (userEmail === "") {
+      alert("이메일을 입력해주세요.");
+      email.focus();
+      return;
+    }
+
+    if (!isValidEmail(userEmail)) {
+      alert("올바른 이메일 형식을 입력해주세요.");
+      email.focus();
+      return;
+    }
 
     if (verifyCode === "") {
       alert("인증번호를 입력해주세요.");
@@ -99,7 +144,36 @@ if (verifyBtn) {
       return;
     }
 
-    alert("인증되었습니다.");
+    fetch(contextPath + "/user/verifyEmailAuthCode.usr", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      body:
+        "userEmail=" + encodeURIComponent(userEmail) +
+        "&authCode=" + encodeURIComponent(verifyCode)
+    })
+      .then(response => response.text())
+      .then(result => {
+        result = result.trim();
+        console.log("인증확인 응답:", result);
+
+        if (result === "success") {
+          isEmailVerified = true;
+          alert("인증되었습니다.");
+          clearInterval(timerInterval);
+        } else if (result === "expired") {
+          isEmailVerified = false;
+          alert("인증시간이 만료되었습니다. 다시 인증번호를 받아주세요.");
+        } else {
+          isEmailVerified = false;
+          alert("인증번호가 올바르지 않습니다.");
+        }
+      })
+      .catch(error => {
+        console.error("인증확인 오류:", error);
+        alert("인증 처리 중 오류가 발생했습니다.");
+      });
   });
 }
 
@@ -140,11 +214,9 @@ findBtn.addEventListener("click", function (e) {
     hasError = true;
   }
 
-  if (verify && verify.value.trim() === "") {
-    if (!hasError) verify.focus();
-    hasError = true;
-    alert("인증번호를 입력해주세요.");
+  if (!isEmailVerified) {
     e.preventDefault();
+    alert("이메일 인증을 완료해주세요.");
     return;
   }
 

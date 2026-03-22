@@ -79,7 +79,7 @@
 								<div>
 									<input type="text" name="verify" id="find-id-verify" class="c-input"
 										placeholder="인증번호입력" />
-									<div class="c-id-find-numbertime">3:00</div>
+									<div class="c-id-find-numbertime" id="find-id-timer">3:00</div>
 								</div>
 								<div class="">
 									<button type="button" id="find-id-verify-btn" class="c-button c-button--secondary c-button--md">
