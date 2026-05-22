@@ -11,7 +11,7 @@ toggleBtn.addEventListener("click", function () {
     pwEye.src = contextPath + "/asset/image/user/password-on.png";
   } else {
     adminPw.type = "password";
-    pwEye.src = "/Oulim/asset/image/user/password-off.png";
+    pwEye.src = contextPath + "/asset/image/user/password-off.png";
   }
 });
 
