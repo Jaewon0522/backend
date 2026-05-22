@@ -36,11 +36,12 @@ public class BasePagenation {
 		
 		this.endPage = (int)(Math.ceil(page / (double) maxPageCnt) * maxPageCnt);
 		this.startPage = this.endPage - (maxPageCnt - 1);
+		this.endPage = Math.min(this.endPage, this.realEndPage);
+		this.startPage = this.endPage - (maxPageCnt - 1);
+		
 		if(this.startPage < 1) {
 			this.startPage = 1;
 		}
-		this.endPage = Math.min(this.endPage, this.realEndPage);
-		this.startPage = this.endPage - (maxPageCnt - 1);
 		
 		this.prev = this.startPage > 1;
 		this.next = this.endPage < this.realEndPage;

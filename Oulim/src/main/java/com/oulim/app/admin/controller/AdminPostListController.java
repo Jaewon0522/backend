@@ -61,12 +61,14 @@ public class AdminPostListController implements Execute{
 		int endPage = pagenation.getEndPage();
 		int startPage = pagenation.getStartPage();
 		
+		System.out.println(postList);
+		
 		request.setAttribute("postList", postList);
 		request.setAttribute("page", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("prev", startPage > 1);
-		request.setAttribute("next", endPage < realEndPage);
+		request.setAttribute("prev", pagenation.getIsPrev());
+		request.setAttribute("next", pagenation.getIsNext());
 		request.setAttribute("searchType", searchType);
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("queryString", buildQuery(searchType, keyword));

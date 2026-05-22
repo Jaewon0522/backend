@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.oulim.app.common.controller.Execute;
 import com.oulim.app.common.controller.Result;
 import com.oulim.app.common.util.BasePagenation;
-import com.oulim.app.common.util.DefineType;
 import com.oulim.app.community.dao.CommunityDAO;
 import com.oulim.app.community.dao.CommunityFileDAO;
 import com.oulim.app.community.dto.CommunityCommentDTO;

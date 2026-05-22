@@ -88,6 +88,18 @@
 			        </div>
 			      </c:forEach>
 			    </div>
+			        <div class="page">
+       		   <!-- 페이지네이션  c-pagination-->
+        	<nav class="c-pagination">
+          <c:if test="${prev}"><a class="c-pagination__link" href="${pageContext.request.contextPath}/admin/postDetail.adm?postNo=${post.postNo}&page=${startPage - 1}${queryString}">&gt;</a></c:if>
+          <c:if test="${not prev}"><a class="c-pagination__link is-disabled">‹</a></c:if>
+          <c:forEach var="i" begin="${startPage}" end="${endPage}">
+            <a class="c-pagination__link ${i == page ? 'is-active' : ''}" href="${pageContext.request.contextPath}/admin/postDetail.adm?postNo=${post.postNo}&page=${i}${queryString}">${i}</a>
+          </c:forEach>
+          <c:if test="${next}"><a class="c-pagination__link" href="${pageContext.request.contextPath}/admin/postDetail.adm?postNo=${post.postNo}&page=${endPage + 1}${queryString}">&lt;</a></c:if>
+          <c:if test="${not next}"><a class="c-pagination__link is-disabled">›</a></c:if>
+        </nav>
+        </div>
 			  </div>
 			</div>
      </section>
